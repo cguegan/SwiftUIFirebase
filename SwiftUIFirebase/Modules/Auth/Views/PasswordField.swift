@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct PasswordField: View {
+    
+    var placeholder: String = "Password"
     @Binding var password: String
     
     var body: some View {
-        SecureField("Password", text: $password)
+        SecureField(placeholder, text: $password)
             .autocapitalization(.none)
             .disableAutocorrection(true)
             .textFieldStyle(RoundedBorderTextFieldStyle())

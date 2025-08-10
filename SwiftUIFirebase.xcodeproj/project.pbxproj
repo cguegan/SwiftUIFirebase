@@ -16,11 +16,13 @@
 		EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8B82E48661E00BDF018 /* AuthService.swift */; };
 		EFC4B8BB2E48693100BDF018 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BA2E48693100BDF018 /* MainView.swift */; };
 		EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BC2E48693F00BDF018 /* LoginView.swift */; };
-		EFC4B8BF2E48694C00BDF018 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */; };
+		EFC4B8BF2E48694C00BDF018 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BE2E48694C00BDF018 /* RegistrationView.swift */; };
 		EFC4B8C12E486CAD00BDF018 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFC4B8C02E486CAD00BDF018 /* GoogleService-Info.plist */; };
 		EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C22E4874C500BDF018 /* EmailField.swift */; };
 		EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */; };
 		EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */; };
+		EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */; };
+		EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,11 +34,13 @@
 		EFC4B8B82E48661E00BDF018 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		EFC4B8BA2E48693100BDF018 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		EFC4B8BC2E48693F00BDF018 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
-		EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		EFC4B8BE2E48694C00BDF018 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		EFC4B8C02E486CAD00BDF018 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EFC4B8C22E4874C500BDF018 /* EmailField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailField.swift; sourceTree = "<group>"; };
 		EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
 		EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonLabel.swift; sourceTree = "<group>"; };
+		EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmailValidation.swift"; sourceTree = "<group>"; };
+		EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,10 +151,11 @@
 			isa = PBXGroup;
 			children = (
 				EFC4B8BC2E48693F00BDF018 /* LoginView.swift */,
-				EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */,
+				EFC4B8BE2E48694C00BDF018 /* RegistrationView.swift */,
 				EFC4B8C22E4874C500BDF018 /* EmailField.swift */,
 				EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */,
 				EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */,
+				EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 		EFC4B8B32E48627700BDF018 /* Extentions */ = {
 			isa = PBXGroup;
 			children = (
+				EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */,
 			);
 			path = Extentions;
 			sourceTree = "<group>";
@@ -297,8 +303,10 @@
 			files = (
 				EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */,
 				EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */,
-				EFC4B8BF2E48694C00BDF018 /* SignUpView.swift in Sources */,
+				EFC4B8BF2E48694C00BDF018 /* RegistrationView.swift in Sources */,
 				EFC4B8BB2E48693100BDF018 /* MainView.swift in Sources */,
+				EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */,
+				EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */,
 				EFC4B8A32E4860C400BDF018 /* ContentView.swift in Sources */,
 				EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */,
 				EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */,

@@ -9,10 +9,12 @@ import SwiftUI
 
 struct EmailField: View {
     
+    var placeholder: String = "Email"
     @Binding var email: String
     
+    
     var body: some View {
-        TextField("Email", text: $email)
+        TextField(placeholder, text: $email)
             .keyboardType(.emailAddress)
             .autocapitalization(.none)
             .disableAutocorrection(true)
