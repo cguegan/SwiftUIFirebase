@@ -20,6 +20,7 @@
 		EFC4B89E2E4860C400BDF018 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFC4B89F2E4860C400BDF018 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EFC4B8A02E4860C400BDF018 /* SwiftUIFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFirebaseApp.swift; sourceTree = "<group>"; };
+		EFC4B8B52E48633200BDF018 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,7 @@
 		EFC4B8802E48600800BDF018 = {
 			isa = PBXGroup;
 			children = (
+				EFC4B8B52E48633200BDF018 /* README.md */,
 				EFC4B8A12E4860C400BDF018 /* SwiftUIFirebase */,
 				EFC4B88A2E48600800BDF018 /* Products */,
 			);
