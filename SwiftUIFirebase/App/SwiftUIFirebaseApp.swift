@@ -12,15 +12,19 @@ import Firebase
 @main
 struct SwiftUIFirebaseApp: App {
     
+    @State private var noteService: NoteService
+    
     init() {
         FirebaseApp.configure()
         
-
+        /// Initialize services that need to be started after Firebase is configured
+        _noteService = State(initialValue: NoteService())
     }
     
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environment(noteService)
         }
     }
 }

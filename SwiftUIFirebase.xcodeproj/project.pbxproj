@@ -23,6 +23,11 @@
 		EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */; };
 		EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */; };
 		EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */; };
+		EFC4B8D12E488AC500BDF018 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D02E488AC500BDF018 /* NoteService.swift */; };
+		EFC4B8D32E488B3A00BDF018 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D22E488B3A00BDF018 /* Note.swift */; };
+		EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D42E48968B00BDF018 /* NotesListing.swift */; };
+		EFC4B8D82E4897F300BDF018 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */; };
+		EFC4B8DB2E48A36700BDF018 /* NoteEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +46,11 @@
 		EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonLabel.swift; sourceTree = "<group>"; };
 		EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmailValidation.swift"; sourceTree = "<group>"; };
 		EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
+		EFC4B8D02E488AC500BDF018 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
+		EFC4B8D22E488B3A00BDF018 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		EFC4B8D42E48968B00BDF018 /* NotesListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListing.swift; sourceTree = "<group>"; };
+		EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
+		EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditSheet.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +109,7 @@
 			children = (
 				EFC4B8A92E48612900BDF018 /* Auth */,
 				EFC4B8AE2E4861A000BDF018 /* Navigation */,
-				EFC4B8AD2E48617300BDF018 /* Documents */,
+				EFC4B8AD2E48617300BDF018 /* Notes */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -160,11 +170,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EFC4B8AD2E48617300BDF018 /* Documents */ = {
+		EFC4B8AD2E48617300BDF018 /* Notes */ = {
 			isa = PBXGroup;
 			children = (
+				EFC4B8CE2E488A5A00BDF018 /* Models */,
+				EFC4B8CF2E488A6A00BDF018 /* Services */,
+				EFC4B8CC2E488A3E00BDF018 /* Views */,
 			);
-			path = Documents;
+			path = Notes;
 			sourceTree = "<group>";
 		};
 		EFC4B8AE2E4861A000BDF018 /* Navigation */ = {
@@ -220,6 +233,56 @@
 			children = (
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		EFC4B8CC2E488A3E00BDF018 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8CD2E488A4900BDF018 /* Listing */,
+				EFC4B8D62E4897DE00BDF018 /* Details */,
+				EFC4B8D92E48A34D00BDF018 /* Sheets */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EFC4B8CD2E488A4900BDF018 /* Listing */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8D42E48968B00BDF018 /* NotesListing.swift */,
+			);
+			path = Listing;
+			sourceTree = "<group>";
+		};
+		EFC4B8CE2E488A5A00BDF018 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8D22E488B3A00BDF018 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EFC4B8CF2E488A6A00BDF018 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8D02E488AC500BDF018 /* NoteService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		EFC4B8D62E4897DE00BDF018 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
+		EFC4B8D92E48A34D00BDF018 /* Sheets */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */,
+			);
+			path = Sheets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -304,11 +367,16 @@
 				EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */,
 				EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */,
 				EFC4B8BF2E48694C00BDF018 /* RegistrationView.swift in Sources */,
+				EFC4B8DB2E48A36700BDF018 /* NoteEditSheet.swift in Sources */,
 				EFC4B8BB2E48693100BDF018 /* MainView.swift in Sources */,
 				EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */,
 				EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */,
+				EFC4B8D82E4897F300BDF018 /* NoteDetailView.swift in Sources */,
 				EFC4B8A32E4860C400BDF018 /* ContentView.swift in Sources */,
 				EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */,
+				EFC4B8D12E488AC500BDF018 /* NoteService.swift in Sources */,
+				EFC4B8D32E488B3A00BDF018 /* Note.swift in Sources */,
+				EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */,
 				EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */,
 				EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */,
 				EFC4B8A42E4860C400BDF018 /* SwiftUIFirebaseApp.swift in Sources */,
