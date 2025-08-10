@@ -28,6 +28,7 @@
 		EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D42E48968B00BDF018 /* NotesListing.swift */; };
 		EFC4B8D82E4897F300BDF018 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */; };
 		EFC4B8DB2E48A36700BDF018 /* NoteEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */; };
+		EFC4B8DF2E48BF6000BDF018 /* Notes+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		EFC4B8D42E48968B00BDF018 /* NotesListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListing.swift; sourceTree = "<group>"; };
 		EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditSheet.swift; sourceTree = "<group>"; };
+		EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+Mocks.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				EFC4B8A62E4860D200BDF018 /* Modules */,
 				EFC4B8A72E4860DE00BDF018 /* Shared */,
 				EFC4B89E2E4860C400BDF018 /* Assets.xcassets */,
+				EFC4B8DC2E48BF1300BDF018 /* Preview Assets */,
 			);
 			path = SwiftUIFirebase;
 			sourceTree = "<group>";
@@ -285,6 +288,22 @@
 			path = Sheets;
 			sourceTree = "<group>";
 		};
+		EFC4B8DC2E48BF1300BDF018 /* Preview Assets */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8DD2E48BF2700BDF018 /* Mocks */,
+			);
+			path = "Preview Assets";
+			sourceTree = "<group>";
+		};
+		EFC4B8DD2E48BF2700BDF018 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,6 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC4B8DF2E48BF6000BDF018 /* Notes+Mocks.swift in Sources */,
 				EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */,
 				EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */,
 				EFC4B8BF2E48694C00BDF018 /* RegistrationView.swift in Sources */,

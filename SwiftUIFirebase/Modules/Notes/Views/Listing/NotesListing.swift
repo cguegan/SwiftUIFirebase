@@ -10,7 +10,8 @@ import SwiftUI
 struct NotesListing: View {
     
     @Environment(NoteService.self) private var noteService
-
+    @State var showEditSheet: Bool = false
+    
     var body: some View {
         List {
             ForEach(noteService.notes) { note in
@@ -23,10 +24,13 @@ struct NotesListing: View {
         .navigationTitle("Notes")
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                Button { addNote() } label: {
-                    Image(systemName: "plus.circle")
+                Button { showEditSheet.toggle() } label: {
+                    Image(systemName: "plus")
                 }
             }
+        }
+        .sheet(isPresented: $showEditSheet) {
+            NoteEditSheet(note: nil)
         }
     }
     
@@ -50,6 +54,7 @@ struct NotesListing: View {
     }
 }
 
-#Preview {
+#Preview {    
     NotesListing()
+        .environment(NoteService())
 }

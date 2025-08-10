@@ -11,7 +11,22 @@ struct MainView: View {
     var body: some View {
         NavigationStack {   
             NotesListing()
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarLeading) {
+                        Menu {
+                            Button("Settings") {
+                                // Action for settings
+                            }
+                            Button("About") {
+                                // Action for about
+                            }
+                        } label: {
+                            Label("Menu", systemImage: "ellipsis")
+                        }
+                    }
+                }
         }
+        
     }
 }
 

@@ -34,6 +34,11 @@ class NoteService {
         Task {
             try await self.fetchAll()
         }
+        
+        #if DEBUG
+        // For debugging purposes, you can add some sample data
+        notes = Note.mocks
+        #endif
     }
     
     // Fetch all items
