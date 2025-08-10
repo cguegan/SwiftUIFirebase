@@ -13,6 +13,14 @@
 		EFC4B8A22E4860C400BDF018 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFC4B89E2E4860C400BDF018 /* Assets.xcassets */; };
 		EFC4B8A32E4860C400BDF018 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B89F2E4860C400BDF018 /* ContentView.swift */; };
 		EFC4B8A42E4860C400BDF018 /* SwiftUIFirebaseApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8A02E4860C400BDF018 /* SwiftUIFirebaseApp.swift */; };
+		EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8B82E48661E00BDF018 /* AuthService.swift */; };
+		EFC4B8BB2E48693100BDF018 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BA2E48693100BDF018 /* MainView.swift */; };
+		EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BC2E48693F00BDF018 /* LoginView.swift */; };
+		EFC4B8BF2E48694C00BDF018 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */; };
+		EFC4B8C12E486CAD00BDF018 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EFC4B8C02E486CAD00BDF018 /* GoogleService-Info.plist */; };
+		EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C22E4874C500BDF018 /* EmailField.swift */; };
+		EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */; };
+		EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +29,14 @@
 		EFC4B89F2E4860C400BDF018 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EFC4B8A02E4860C400BDF018 /* SwiftUIFirebaseApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIFirebaseApp.swift; sourceTree = "<group>"; };
 		EFC4B8B52E48633200BDF018 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EFC4B8B82E48661E00BDF018 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		EFC4B8BA2E48693100BDF018 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		EFC4B8BC2E48693F00BDF018 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		EFC4B8C02E486CAD00BDF018 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		EFC4B8C22E4874C500BDF018 /* EmailField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailField.swift; sourceTree = "<group>"; };
+		EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordField.swift; sourceTree = "<group>"; };
+		EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +77,6 @@
 				EFC4B8A62E4860D200BDF018 /* Modules */,
 				EFC4B8A72E4860DE00BDF018 /* Shared */,
 				EFC4B89E2E4860C400BDF018 /* Assets.xcassets */,
-				EFC4B89F2E4860C400BDF018 /* ContentView.swift */,
 			);
 			path = SwiftUIFirebase;
 			sourceTree = "<group>";
@@ -70,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC4B8A02E4860C400BDF018 /* SwiftUIFirebaseApp.swift */,
+				EFC4B8C02E486CAD00BDF018 /* GoogleService-Info.plist */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -115,6 +131,7 @@
 		EFC4B8AA2E48613200BDF018 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				EFC4B8B82E48661E00BDF018 /* AuthService.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -129,6 +146,11 @@
 		EFC4B8AC2E48614400BDF018 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC4B8BC2E48693F00BDF018 /* LoginView.swift */,
+				EFC4B8BE2E48694C00BDF018 /* SignUpView.swift */,
+				EFC4B8C22E4874C500BDF018 /* EmailField.swift */,
+				EFC4B8C42E4875BD00BDF018 /* PasswordField.swift */,
+				EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -153,6 +175,8 @@
 		EFC4B8AF2E4861AF00BDF018 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EFC4B89F2E4860C400BDF018 /* ContentView.swift */,
+				EFC4B8BA2E48693100BDF018 /* MainView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -260,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFC4B8A22E4860C400BDF018 /* Assets.xcassets in Resources */,
+				EFC4B8C12E486CAD00BDF018 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,7 +295,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */,
+				EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */,
+				EFC4B8BF2E48694C00BDF018 /* SignUpView.swift in Sources */,
+				EFC4B8BB2E48693100BDF018 /* MainView.swift in Sources */,
 				EFC4B8A32E4860C400BDF018 /* ContentView.swift in Sources */,
+				EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */,
+				EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */,
+				EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */,
 				EFC4B8A42E4860C400BDF018 /* SwiftUIFirebaseApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -409,6 +441,7 @@
 				DEVELOPMENT_TEAM = AFN965WVDV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -441,6 +474,7 @@
 				DEVELOPMENT_TEAM = AFN965WVDV;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
