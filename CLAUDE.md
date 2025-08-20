@@ -28,6 +28,7 @@ The app follows a **feature-based modular architecture**:
 - **Auth Module** (`Modules/Auth/`): Firebase authentication with email/password
 - **Notes Module** (`Modules/Notes/`): CRUD operations for notes using Firestore
 - **Navigation Module** (`Modules/Navigation/`): Root navigation and authenticated state management
+- **Settings Module** (`Modules/Settings/`): User profile display and logout functionality
 
 ### Key Architectural Patterns
 1. **MVVM with Observable**: Services act as ViewModels using `@Observable` macro
@@ -45,6 +46,7 @@ The app follows a **feature-based modular architecture**:
 ContentView (auth router) -> AuthService (observable)
     ├── Not authenticated -> Login/Registration views
     └── Authenticated -> MainView -> NoteService (observable) -> Notes views
+                              └──> Settings (via menu) -> Logout action
 ```
 
 ## Important Implementation Details
@@ -52,6 +54,7 @@ ContentView (auth router) -> AuthService (observable)
 ### Authentication
 - `AuthService` manages Firebase Auth state and operations
 - Email validation via `String+EmailValidation` extension
+- Password validation helper in `String+EmailValidation` extension
 - Form validation in login/registration views
 - User state persisted across app launches
 
@@ -60,12 +63,14 @@ ContentView (auth router) -> AuthService (observable)
 - Real-time updates via Firestore listeners
 - Each note has: id, title, content, createdAt, updatedAt
 - Navigation uses SwiftUI's `NavigationStack` with value-based routing
+- **Bug Fix Applied**: Update method now correctly uses user-scoped collection path
 
 ### UI Components
 - Glass effect backgrounds using `Material.ultraThin`
-- Custom toolbar configurations in `MainView`
+- Custom toolbar configurations in `MainView` with menu navigation
 - Sheet presentations for note editing
 - Focus state management for form inputs
+- Settings accessed via NavigationLink from menu
 
 ## Development Requirements
 - **Xcode**: 16.0+ (project uses iOS 26.0 deployment target)
@@ -79,6 +84,12 @@ ContentView (auth router) -> AuthService (observable)
 2. Add Model, Service (if needed), and Views subfolders
 3. Inject service via environment if needed
 4. Update `MainView` for navigation integration
+
+### Recent Updates
+- Added Settings module with user profile display and logout
+- Fixed NoteService update method to use correct user-scoped collection
+- Enhanced String extension with password validation
+- Integrated Settings navigation via menu in MainView
 
 ### Working with Firebase
 - Always use async/await for Firebase operations

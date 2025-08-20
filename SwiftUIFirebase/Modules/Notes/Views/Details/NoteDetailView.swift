@@ -9,9 +9,13 @@ import SwiftUI
 
 struct NoteDetailView: View {
     
+    /// Given note to display
     var note: Note
+    
+    /// State to control the visibility of the edit sheet
     @State var showEditSheet: Bool = false
     
+    /// Main Body
     var body: some View {
         ScrollView {
             Text(note.title)
@@ -26,7 +30,6 @@ struct NoteDetailView: View {
                 .multilineTextAlignment(.leading)
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer()
         }
         .navigationTitle(note.title)
         .navigationBarTitleDisplayMode(.inline)
@@ -46,15 +49,21 @@ struct NoteDetailView: View {
     }
 }
 
+
+// MARK: - Preview
+// ———————————————
+
 #Preview {
     NavigationStack {
         NoteDetailView(
-            note: Note(
-                id: "1",
+            note: Note.mock(
+                id: "preview-1",
                 title: "Sample Note",
-                content: "This is a sample note content.",
-                createdAt: Date(),
-                updatedAt: Date()
+                content: """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+Suspendisse potenti. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+"""
             )
         )
     }

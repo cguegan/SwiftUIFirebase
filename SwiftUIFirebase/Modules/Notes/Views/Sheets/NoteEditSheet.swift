@@ -9,17 +9,21 @@ import SwiftUI
 
 struct NoteEditSheet: View {
     
+    /// Environment variables to handle dismissal and note service
     @Environment(\.dismiss) private var dismiss
-    @Environment(NoteService.self) private var noteService
+    @Environment(NoteRepo.self) private var noteService
     
+    /// State property to hold the note being edited
     @State var note: Note = Note(title: "", content: "")
     
+    /// Initialize with an optional note
     init(note: Note? = nil) {
         if let note = note {
             self._note = State(initialValue: note)
         }
     }
     
+    /// Main View
     var body: some View {
         NavigationStack {
             ZStack {
@@ -69,7 +73,10 @@ struct NoteEditSheet: View {
     }
 }
 
+
+// MARK: - Preview
+// ———————————————
 #Preview {
     NoteEditSheet()
-        .environment(NoteService())
+        .environment(NoteRepo())
 }

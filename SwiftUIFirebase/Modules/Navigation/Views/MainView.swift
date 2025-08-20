@@ -8,22 +8,29 @@
 import SwiftUI
 
 struct MainView: View {
+    @State private var showAbout = false
+    
     var body: some View {
         NavigationStack {   
             NotesListing()
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Menu {
-                            Button("Settings") {
-                                // Action for settings
+                            NavigationLink(destination: SettingsView()) {
+                                Label("Settings", systemImage: "gear")
                             }
-                            Button("About") {
-                                // Action for about
+                            Button {
+                                showAbout = true
+                            } label: {
+                                Label("About", systemImage: "info.circle")
                             }
                         } label: {
                             Label("Menu", systemImage: "ellipsis")
                         }
                     }
+                }
+                .sheet(isPresented: $showAbout) {
+                    AboutView()
                 }
         }
         

@@ -9,9 +9,10 @@ import SwiftUI
 
 struct NotesListing: View {
     
-    @Environment(NoteService.self) private var noteService
+    @Environment(NoteRepo.self) private var noteService
     @State var showEditSheet: Bool = false
     
+    /// The main view for listing notes
     var body: some View {
         List {
             ForEach(noteService.notes) { note in
@@ -34,6 +35,7 @@ struct NotesListing: View {
         }
     }
     
+    /// Add a new note
     func addNote() {
         do {
             try noteService.add(Note(title: "New Note", content: ""))
@@ -42,6 +44,7 @@ struct NotesListing: View {
         }
     }
     
+    /// Remove items at specified offsets
     func removeItems(at offsets: IndexSet) {
         for index in offsets {
             let note = noteService.notes[index]
@@ -54,7 +57,10 @@ struct NotesListing: View {
     }
 }
 
-#Preview {    
+// MARK: - Preview
+// ———————————————
+
+#Preview {
     NotesListing()
-        .environment(NoteService())
+        .environment(NoteRepo())
 }

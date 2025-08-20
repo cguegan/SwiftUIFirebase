@@ -10,9 +10,9 @@ import Foundation
 extension Note {
     static var mocks: [Note] {
         return [
-            Note(id: "1", title: "First Note", content: "Content of the first note.", createdAt: Date(), updatedAt: Date()),
-            Note(id: "2", title: "Second Note", content: "Content of the second note.", createdAt: Date(), updatedAt: Date()),
-            Note(id: "3", title: "Third Note", content: "Content of the third note.", createdAt: Date(), updatedAt: Date())
+            Note.mock(id: "mock-1", title: "First Note", content: "Content of the first note."),
+            Note.mock(id: "mock-2", title: "Second Note", content: "Content of the second note."),
+            Note.mock(id: "mock-3", title: "Third Note", content: "Content of the third note.")
         ]
     }
 }

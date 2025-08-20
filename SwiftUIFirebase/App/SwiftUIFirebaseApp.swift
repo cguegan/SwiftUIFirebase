@@ -12,13 +12,13 @@ import Firebase
 @main
 struct SwiftUIFirebaseApp: App {
     
-    @State private var noteService: NoteService
+    @State private var noteService: NoteRepo
     
     init() {
         FirebaseApp.configure()
         
         /// Initialize services that need to be started after Firebase is configured
-        _noteService = State(initialValue: NoteService())
+        _noteService = State(initialValue: NoteRepo())
     }
     
     var body: some Scene {

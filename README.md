@@ -8,6 +8,7 @@ This project is a modern and opinionated SwiftUI architecture scaffolding for ap
 
 - 🔐 **Authentication**: Email/password authentication with Firebase Auth
 - 📝 **Notes Management**: Create, read, update, and delete notes with Firestore
+- ⚙️ **Settings Module**: User profile display and logout functionality
 - 🏗️ **Modern Architecture**: Observable Service pattern with SwiftUI's Observable macro
 - 🎨 **Beautiful UI**: Glass morphism effects and modern SwiftUI components
 - 📱 **iOS 26.0+**: Built with the latest iOS APIs and SwiftUI features
@@ -62,12 +63,15 @@ SwiftUIFirebase/
 │   │   └── Views/              # Login, Registration, UI components
 │   ├── Navigation/              # App navigation
 │   │   └── Views/              # ContentView, MainView
-│   └── Notes/                   # Notes feature
-│       ├── Models/              # Note data model
-│       ├── Services/            # NoteService with Firestore
-│       └── Views/               # Notes listing, detail, edit
+│   ├── Notes/                   # Notes feature
+│   │   ├── Models/              # Note data model
+│   │   ├── Services/            # NoteService with Firestore
+│   │   └── Views/               # Notes listing, detail, edit
+│   └── Settings/                # Settings module
+│       └── Views/               # SettingsView with user info and logout
 ├── Shared/                       # Shared code
-│   └── Extensions/              # String extensions, utilities
+│   ├── Enums/                   # FirebaseError enum
+│   └── Extensions/              # String extensions (email/password validation)
 └── Preview Assets/               # SwiftUI preview support
     └── Mocks/                    # Mock data for previews
 ```

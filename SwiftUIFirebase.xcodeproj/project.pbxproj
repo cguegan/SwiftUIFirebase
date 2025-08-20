@@ -23,12 +23,15 @@
 		EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */; };
 		EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */; };
 		EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */; };
-		EFC4B8D12E488AC500BDF018 /* NoteService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D02E488AC500BDF018 /* NoteService.swift */; };
+		EFC4B8D12E488AC500BDF018 /* NoteRepo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D02E488AC500BDF018 /* NoteRepo.swift */; };
 		EFC4B8D32E488B3A00BDF018 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D22E488B3A00BDF018 /* Note.swift */; };
 		EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D42E48968B00BDF018 /* NotesListing.swift */; };
 		EFC4B8D82E4897F300BDF018 /* NoteDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */; };
 		EFC4B8DB2E48A36700BDF018 /* NoteEditSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */; };
 		EFC4B8DF2E48BF6000BDF018 /* Notes+Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */; };
+		EFF68C832E56027900718968 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C822E56027900718968 /* FirebaseError.swift */; };
+		EFF68C872E5624A900718968 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C842E5624A900718968 /* SettingsView.swift */; };
+		EFF68C8B2E56613D00718968 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C8A2E56613D00718968 /* AboutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,12 +50,15 @@
 		EFC4B8C62E48763500BDF018 /* AuthButtonLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthButtonLabel.swift; sourceTree = "<group>"; };
 		EFC4B8C82E4878D500BDF018 /* String+EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+EmailValidation.swift"; sourceTree = "<group>"; };
 		EFC4B8CA2E487F6700BDF018 /* AppLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLogoView.swift; sourceTree = "<group>"; };
-		EFC4B8D02E488AC500BDF018 /* NoteService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteService.swift; sourceTree = "<group>"; };
+		EFC4B8D02E488AC500BDF018 /* NoteRepo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRepo.swift; sourceTree = "<group>"; };
 		EFC4B8D22E488B3A00BDF018 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		EFC4B8D42E48968B00BDF018 /* NotesListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesListing.swift; sourceTree = "<group>"; };
 		EFC4B8D72E4897F300BDF018 /* NoteDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailView.swift; sourceTree = "<group>"; };
 		EFC4B8DA2E48A36700BDF018 /* NoteEditSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditSheet.swift; sourceTree = "<group>"; };
 		EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Notes+Mocks.swift"; sourceTree = "<group>"; };
+		EFF68C822E56027900718968 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		EFF68C842E5624A900718968 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		EFF68C8A2E56613D00718968 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +119,7 @@
 				EFC4B8A92E48612900BDF018 /* Auth */,
 				EFC4B8AE2E4861A000BDF018 /* Navigation */,
 				EFC4B8AD2E48617300BDF018 /* Notes */,
+				EFF68C8C2E5665F500718968 /* Settings */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -131,6 +138,7 @@
 		EFC4B8A82E48611200BDF018 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
+				EFF68C822E56027900718968 /* FirebaseError.swift */,
 			);
 			path = Enums;
 			sourceTree = "<group>";
@@ -177,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC4B8CE2E488A5A00BDF018 /* Models */,
-				EFC4B8CF2E488A6A00BDF018 /* Services */,
+				EFC4B8CF2E488A6A00BDF018 /* Repository */,
 				EFC4B8CC2E488A3E00BDF018 /* Views */,
 			);
 			path = Notes;
@@ -198,6 +206,7 @@
 			children = (
 				EFC4B89F2E4860C400BDF018 /* ContentView.swift */,
 				EFC4B8BA2E48693100BDF018 /* MainView.swift */,
+				EFF68C8A2E56613D00718968 /* AboutView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -264,12 +273,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EFC4B8CF2E488A6A00BDF018 /* Services */ = {
+		EFC4B8CF2E488A6A00BDF018 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				EFC4B8D02E488AC500BDF018 /* NoteService.swift */,
+				EFC4B8D02E488AC500BDF018 /* NoteRepo.swift */,
 			);
-			path = Services;
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		EFC4B8D62E4897DE00BDF018 /* Details */ = {
@@ -302,6 +311,22 @@
 				EFC4B8DE2E48BF6000BDF018 /* Notes+Mocks.swift */,
 			);
 			path = Mocks;
+			sourceTree = "<group>";
+		};
+		EFF68C8C2E5665F500718968 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EFF68C8D2E5665FE00718968 /* Views */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		EFF68C8D2E5665FE00718968 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EFF68C842E5624A900718968 /* SettingsView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -384,6 +409,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFC4B8DF2E48BF6000BDF018 /* Notes+Mocks.swift in Sources */,
+				EFF68C8B2E56613D00718968 /* AboutView.swift in Sources */,
 				EFC4B8B92E48661E00BDF018 /* AuthService.swift in Sources */,
 				EFC4B8C72E48763500BDF018 /* AuthButtonLabel.swift in Sources */,
 				EFC4B8BF2E48694C00BDF018 /* RegistrationView.swift in Sources */,
@@ -392,14 +418,16 @@
 				EFC4B8CB2E487F6700BDF018 /* AppLogoView.swift in Sources */,
 				EFC4B8C92E4878D500BDF018 /* String+EmailValidation.swift in Sources */,
 				EFC4B8D82E4897F300BDF018 /* NoteDetailView.swift in Sources */,
+				EFF68C832E56027900718968 /* FirebaseError.swift in Sources */,
 				EFC4B8A32E4860C400BDF018 /* ContentView.swift in Sources */,
 				EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */,
-				EFC4B8D12E488AC500BDF018 /* NoteService.swift in Sources */,
+				EFC4B8D12E488AC500BDF018 /* NoteRepo.swift in Sources */,
 				EFC4B8D32E488B3A00BDF018 /* Note.swift in Sources */,
 				EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */,
 				EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */,
 				EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */,
 				EFC4B8A42E4860C400BDF018 /* SwiftUIFirebaseApp.swift in Sources */,
+				EFF68C872E5624A900718968 /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
