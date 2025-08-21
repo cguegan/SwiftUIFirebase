@@ -10,6 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var authManager = AuthService()
+    @AppStorage("preferredColorScheme") private var preferredColorScheme: String = "system"
 
     var body: some View {
         Group {
@@ -28,6 +29,18 @@ struct ContentView: View {
         .environment(authManager)
         .task {
             authManager.refreshUser()
+        }
+        .preferredColorScheme(colorSchemeFromString(preferredColorScheme))
+    }
+    
+    private func colorSchemeFromString(_ scheme: String) -> ColorScheme? {
+        switch scheme {
+        case "light":
+            return .light
+        case "dark":
+            return .dark
+        default:
+            return nil // System default
         }
     }
 }

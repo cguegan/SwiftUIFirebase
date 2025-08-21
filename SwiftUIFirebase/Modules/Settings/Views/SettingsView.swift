@@ -12,9 +12,11 @@ struct SettingsView: View {
     
     /// Environment property
     @Environment(AuthService.self) private var authService
+    @Environment(\.colorScheme) private var systemColorScheme
     
     /// App information
     @State private var showLogoutConfirmation = false
+    @AppStorage("preferredColorScheme") private var preferredColorScheme: String = "system"
     
     /// Main Body
     var body: some View {
@@ -42,23 +44,45 @@ struct SettingsView: View {
                 Spacer()
                 
                 // Settings Options
-                VStack(spacing: 0) {
-                    // Logout Button
-                    Button {
-                        showLogoutConfirmation = true
-                    } label: {
+                VStack(spacing: 12) {
+                    // Appearance Section
+                    VStack(spacing: 0) {
                         HStack {
-                            Image(systemName: "rectangle.portrait.and.arrow.right")
-                                .foregroundColor(.red)
-                            Text("Log Out")
-                                .foregroundColor(.red)
+                            Label("Appearance", systemImage: "moon.circle")
+                                .foregroundColor(.primary)
                             Spacer()
+                            Picker("Theme", selection: $preferredColorScheme) {
+                                Label("System", systemImage: "gear").tag("system")
+                                Label("Light", systemImage: "sun.max").tag("light")
+                                Label("Dark", systemImage: "moon").tag("dark")
+                            }
+                            .pickerStyle(.menu)
+                            .tint(.blue)
                         }
                         .padding()
                         .background(Color(.systemBackground))
                     }
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
+                    
+                    // Account Section
+                    VStack(spacing: 0) {
+                        // Logout Button
+                        Button {
+                            showLogoutConfirmation = true
+                        } label: {
+                            HStack {
+                                Image(systemName: "rectangle.portrait.and.arrow.right")
+                                    .foregroundColor(.red)
+                                Text("Log Out")
+                                    .foregroundColor(.red)
+                                Spacer()
+                            }
+                            .padding()
+                            .background(Color(.systemBackground))
+                        }
+                    }
+                    .clipShape(RoundedRectangle(cornerRadius: 10))
                 }
-                .clipShape(RoundedRectangle(cornerRadius: 10))
                 .padding(.horizontal)
                 
                 Spacer()

@@ -59,6 +59,7 @@
 		EFF68C822E56027900718968 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		EFF68C842E5624A900718968 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EFF68C8A2E56613D00718968 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		EFF68C8E2E56686F00718968 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				EFC4B8B52E48633200BDF018 /* README.md */,
+				EFF68C8E2E56686F00718968 /* CLAUDE.md */,
 				EFC4B8A12E4860C400BDF018 /* SwiftUIFirebase */,
 				EFC4B88A2E48600800BDF018 /* Products */,
 			);
