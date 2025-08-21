@@ -12,7 +12,7 @@ struct PasswordField: View {
     var placeholder: String = "Password"
     @Binding var password: String
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         SecureField(placeholder, text: $password)
             .autocapitalization(.none)

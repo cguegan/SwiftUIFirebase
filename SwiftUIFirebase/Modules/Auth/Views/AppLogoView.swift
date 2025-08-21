@@ -11,7 +11,7 @@ struct AppLogoView: View {
     
     var color: Color = .black
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         ZStack {
             

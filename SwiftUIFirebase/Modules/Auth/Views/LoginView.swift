@@ -13,19 +13,19 @@ struct LoginView: View {
     @State private var email    = ""
     @State private var password = ""
     @FocusState private var focusedField: Field?
-
+    
     enum Field: Hashable {
         case email
         case password
     }
-
+    
     var formIsValid: Bool {
         !email.isEmpty &&
         email.isValidEmail() &&
         password.count >= 6
     }
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         NavigationStack {
             VStack() {
@@ -45,11 +45,11 @@ struct LoginView: View {
                 
                 EmailField( placeholder:"Your email",
                             email: $email )
-                    .focused($focusedField, equals: .email)
+                .focused($focusedField, equals: .email)
                 
                 PasswordField( placeholder: "Your password",
                                password: $password )
-                    .focused($focusedField, equals: .password)
+                .focused($focusedField, equals: .password)
                 
                 Button {
                     signIn()
@@ -83,8 +83,12 @@ struct LoginView: View {
             }
         }
     }
+}
+
     
-    /// Private Methods
+// MARK: - Methods
+// ———————————————
+extension LoginView {
     private func signIn() {
         Task { await auth.signIn(email: email, password: password) }
     }

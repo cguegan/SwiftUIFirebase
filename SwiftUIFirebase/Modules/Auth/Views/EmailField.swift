@@ -12,7 +12,7 @@ struct EmailField: View {
     var placeholder: String = "Email"
     @Binding var email: String
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         TextField(placeholder, text: $email)
             .keyboardType(.emailAddress)

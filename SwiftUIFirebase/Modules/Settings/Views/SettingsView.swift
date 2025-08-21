@@ -38,29 +38,15 @@ struct SettingsView: View {
                 }
             }
             
-            
             // Appearance Section
             Section(header: Text("Appearance")) {
-                HStack {
-                    switch colorScheme {
-                    case "light":
-                        Image(systemName: "sun.max")
-                            .foregroundColor(.yellow)
-                    case "dark":
-                        Image(systemName: "moon")
-                            .foregroundColor(.blue)
-                    default:
-                        Image(systemName: "gear")
-                            .foregroundColor(.gray)
-                    }
-                    
-                    Picker("Theme", selection: $colorScheme) {
-                        Text("System").tag("system")
-                        Text("Light").tag("light")
-                        Text("Dark").tag("dark")
-                    }
-                    .tint(.black)
+                Picker("Theme", selection: $colorScheme) {
+                    Text("System").tag("system")
+                    Text("Light").tag("light")
+                    Text("Dark").tag("dark")
                 }
+                .tint(.black)
+                .pickerStyle(.segmented)
             }
             
             // Logout Button

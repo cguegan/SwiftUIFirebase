@@ -11,7 +11,8 @@ struct NoteEditSheet: View {
     
     /// Environment variables to handle dismissal and note service
     @Environment(\.dismiss) private var dismiss
-    @Environment(NoteRepo.self) private var noteService
+    @Environment(NoteRepo.self) private var repo
+    @Environment(AlertService.self) private var alertService
     
     /// State property to hold the note being edited
     @State var note: Note = Note(title: "", content: "")
@@ -28,21 +29,21 @@ struct NoteEditSheet: View {
         NavigationStack {
             ZStack {
                 Rectangle()
-                    .fill(.ultraThinMaterial)
+                    .fill(Color(.systemGray6))
                     .ignoresSafeArea()
                 
-                VStack(alignment: .leading, spacing: 8) {
+                VStack(alignment: .leading, spacing: 6) {
                     TextField("Title", text: $note.title)
                         .padding(8)
                         .background(Color.white)
-                        .cornerRadius(8)
+                        .cornerRadius(16)
                     
                     TextEditor( text: $note.content )
                     .multilineTextAlignment(.leading)
                     .frame(maxHeight: .infinity)
                     .padding(8)
                     .background(Color.white)
-                    .cornerRadius(8)
+                    .cornerRadius(16)
                     
                 }
                 .padding()
@@ -55,16 +56,23 @@ struct NoteEditSheet: View {
                             Image(systemName: "xmark")
                         }
                     }
-                    
                     ToolbarItem(placement: .confirmationAction) {
                         Button("Save") {
                             if note.id == nil {
-                                try? noteService.add(note)
+                                repo.add(note)
                             } else {
-                                try? noteService.update(note)
+                                repo.update(note)
                             }
                             dismiss()
                         }
+                        .disabled(note.title.isEmpty)
+                    }
+                }
+                .onChange(of: repo.error) { _, newError in
+                    if let error = newError {
+                        alertService.showAlert(
+                            title: "Note Error",
+                            message: error.localizedDescription)
                     }
                 }
             }
@@ -79,4 +87,5 @@ struct NoteEditSheet: View {
 #Preview {
     NoteEditSheet()
         .environment(NoteRepo())
+        .environment(AlertService())
 }

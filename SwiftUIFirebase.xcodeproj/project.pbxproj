@@ -32,6 +32,7 @@
 		EFF68C832E56027900718968 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C822E56027900718968 /* FirebaseError.swift */; };
 		EFF68C872E5624A900718968 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C842E5624A900718968 /* SettingsView.swift */; };
 		EFF68C8B2E56613D00718968 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C8A2E56613D00718968 /* AboutView.swift */; };
+		EFF68C962E571A6900718968 /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF68C952E571A6900718968 /* AlertService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		EFF68C842E5624A900718968 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		EFF68C8A2E56613D00718968 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		EFF68C8E2E56686F00718968 /* CLAUDE.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = CLAUDE.md; sourceTree = "<group>"; };
+		EFF68C952E571A6900718968 /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -216,6 +218,7 @@
 		EFC4B8B02E4861B800BDF018 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				EFF68C952E571A6900718968 /* AlertService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -425,6 +428,7 @@
 				EFC4B8C32E4874C500BDF018 /* EmailField.swift in Sources */,
 				EFC4B8D12E488AC500BDF018 /* NoteRepo.swift in Sources */,
 				EFC4B8D32E488B3A00BDF018 /* Note.swift in Sources */,
+				EFF68C962E571A6900718968 /* AlertService.swift in Sources */,
 				EFC4B8D52E48968B00BDF018 /* NotesListing.swift in Sources */,
 				EFC4B8C52E4875BD00BDF018 /* PasswordField.swift in Sources */,
 				EFC4B8BD2E48693F00BDF018 /* LoginView.swift in Sources */,

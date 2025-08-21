@@ -35,7 +35,7 @@ class NoteRepo {
     
     /// Initialize the service
     init() {
-        try? self.getNotes()
+        self.getNotes()
         
         #if DEBUG
         /// For debugging purposes, you can add some sample data
@@ -44,9 +44,10 @@ class NoteRepo {
     }
     
     /// Listen to the collection
-    func getNotes() throws {
+    func getNotes() {
         guard let dbCollection = dbCollection else {
-            throw FirebaseError.listenerFailed
+            self.error = FirebaseError.listenerFailed
+            return
         }
         
         self.listener = dbCollection.order(by: "title").addSnapshotListener { snapshot, error in

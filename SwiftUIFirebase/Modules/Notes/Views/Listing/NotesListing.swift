@@ -10,6 +10,8 @@ import SwiftUI
 struct NotesListing: View {
     
     @Environment(NoteRepo.self) private var repo
+    @Environment(AlertService.self) private var alertService
+
     @State var showEditSheet: Bool = false
     @State private var error: FirebaseError? = nil
     
@@ -34,14 +36,10 @@ struct NotesListing: View {
         .sheet(isPresented: $showEditSheet) {
             NoteEditSheet(note: nil)
         }
-        .alert(item: $error) { error in
-            Alert( title: Text("Error"),
-                   message: Text(error.localizedDescription),
-                   dismissButton: .default(Text("OK")) )
-        }
         .onChange(of: repo.error) { _, newError in
             if let error = newError {
-                self.error = error
+                alertService.showAlert( title: "Notes Error",
+                                        message: error.localizedDescription )
             }
         }
     }
@@ -73,4 +71,5 @@ extension NotesListing {
 #Preview {
     NotesListing()
         .environment(NoteRepo())
+        .environment(AlertService())
 }

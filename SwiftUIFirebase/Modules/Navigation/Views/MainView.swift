@@ -10,6 +10,7 @@ import SwiftUI
 struct MainView: View {
     @State private var showAbout = false
     
+    /// Main View Body
     var body: some View {
         NavigationStack {   
             NotesListing()
@@ -37,6 +38,8 @@ struct MainView: View {
     }
 }
 
+// MARK: - Preview
+// —-—————————————
 #Preview {
     MainView()
 }

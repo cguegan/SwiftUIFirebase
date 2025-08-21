@@ -30,7 +30,7 @@ struct RegistrationView: View {
         password == confirmPassword
     }
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         VStack() {
             
@@ -90,12 +90,18 @@ struct RegistrationView: View {
         }
     }
     
+}
+
     
-    /// Private Methods
+// MARK: - Methods
+// ———————————————
+extension RegistrationView {
+    
     private func signUp() {
         Task { await auth.signUp( email: email,
                                   password: password ) }
     }
+    
 }
 
 

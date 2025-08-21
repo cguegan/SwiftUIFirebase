@@ -11,7 +11,7 @@ struct AuthButtonLabel: View {
     
     var text: String = "Login"
     
-    /// View Body
+    /// Main View Body
     var body: some View {
         HStack {
             Text(text)

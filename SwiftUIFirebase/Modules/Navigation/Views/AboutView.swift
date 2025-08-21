@@ -18,7 +18,7 @@ struct AboutView: View {
     private let buildNumber = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "1"
     private let contactEmail = "support@swiftuifirebase.app"
     
-    /// Main Body
+    /// Main View Body
     var body: some View {
         NavigationStack {
             ZStack {
@@ -99,10 +99,8 @@ struct AboutView: View {
     }
 }
 
-
 // MARK: - Preview
 // ———————————————
-
 #Preview {
     AboutView()
 }

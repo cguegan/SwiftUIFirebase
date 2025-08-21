@@ -8,11 +8,13 @@ This project is a modern and opinionated SwiftUI architecture scaffolding for ap
 
 - 🔐 **Authentication**: Email/password authentication with Firebase Auth
 - 📝 **Notes Management**: Create, read, update, and delete notes with Firestore
-- ⚙️ **Settings Module**: User profile display and logout functionality
-- 🏗️ **Modern Architecture**: Observable Service pattern with SwiftUI's Observable macro
-- 🎨 **Beautiful UI**: Glass morphism effects and modern SwiftUI components
-- 📱 **iOS 26.0+**: Built with the latest iOS APIs and SwiftUI features
-- 🔄 **Firebase Sync**: Automatic data synchronization with Firestore
+- ⚙️ **Settings Module**: User profile display, theme switching, and logout functionality
+- 🚨 **Alert System**: Centralized alert management with AlertService
+- 🌓 **Theme Support**: Light/Dark/System theme modes with persistence
+- 🏗️ **Modern Architecture**: Observable pattern with SwiftUI's @Observable macro
+- 🎨 **Beautiful UI**: Clean design with customizable themes
+- 📱 **iOS 17.0+**: Built with the latest iOS APIs and SwiftUI features
+- 🔄 **Real-time Sync**: Automatic data synchronization with Firestore listeners
 
 ## Getting Started
 
@@ -62,16 +64,17 @@ SwiftUIFirebase/
 │   │   ├── Services/           # AuthService with Firebase Auth
 │   │   └── Views/              # Login, Registration, UI components
 │   ├── Navigation/              # App navigation
-│   │   └── Views/              # ContentView, MainView
+│   │   ├── Services/           # AlertService for app-wide alerts
+│   │   └── Views/              # ContentView, MainView, AboutView
 │   ├── Notes/                   # Notes feature
 │   │   ├── Models/              # Note data model
-│   │   ├── Services/            # NoteService with Firestore
-│   │   └── Views/               # Notes listing, detail, edit
+│   │   ├── Repository/          # NoteRepo with Firestore operations
+│   │   └── Views/               # Notes listing, detail, edit sheets
 │   └── Settings/                # Settings module
-│       └── Views/               # SettingsView with user info and logout
+│       └── Views/               # SettingsView with theme toggle and logout
 ├── Shared/                       # Shared code
-│   ├── Enums/                   # FirebaseError enum
-│   └── Extensions/              # String extensions (email/password validation)
+│   ├── Enums/                   # FirebaseError enum with Identifiable
+│   └── Extensions/              # String extensions (email validation)
 └── Preview Assets/               # SwiftUI preview support
     └── Mocks/                    # Mock data for previews
 ```
@@ -94,36 +97,64 @@ User Input → View → Service (Observable) → Firebase → Service → View U
 - Manages user authentication state
 - Handles login, registration, and logout
 - Persists authentication across app launches
+- Error state management
 
-#### NoteService
-- CRUD operations for notes
-- Real-time synchronization with Firestore
-- User-scoped data storage
+#### NoteRepo
+- CRUD operations for notes with Firestore
+- Real-time synchronization via listeners
+- User-scoped data storage (users/{uid}/notes)
+- Error handling with FirebaseError
+
+#### AlertService
+- Centralized alert management system
+- Observable service for app-wide alerts
+- WithAlertView wrapper for consistent UI
+- Automatic error display handling
 
 ## Usage
 
 ### Authentication
 ```swift
 // Login
-await authService.login(email: email, password: password)
+await authService.signIn(email: email, password: password)
 
 // Register
-await authService.register(email: email, password: password)
+await authService.signUp(email: email, password: password)
 
 // Logout
-authService.logout()
+authService.signOut()
 ```
 
 ### Notes Management
 ```swift
-// Create note
-await noteService.createNote(title: title, content: content)
+// Add note
+noteRepo.add(note)
 
 // Update note
-await noteService.updateNote(note)
+noteRepo.update(note)
 
 // Delete note
-await noteService.deleteNote(note)
+await noteRepo.delete(note)
+```
+
+### Alert System
+```swift
+// Show alert from anywhere
+alertService.showAlert(title: "Error", message: "Something went wrong")
+
+// Wrap views with alert support
+WithAlertView {
+    YourContentView()
+}
+```
+
+### Theme Management
+```swift
+// Access theme preference
+@AppStorage("colorScheme") private var colorScheme: String = "system"
+
+// Apply theme
+.preferredColorScheme(colorSchemeFromString(colorScheme))
 ```
 
 ## Development

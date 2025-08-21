@@ -3,7 +3,7 @@
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
 ## Project Overview
-SwiftUI + Firebase iOS app template with authentication and notes management. Modern SwiftUI architecture using Observable pattern, async/await, and modular organization.
+SwiftUI + Firebase iOS app template with authentication, notes management, and centralized alert system. Modern SwiftUI architecture using Observable pattern, async/await, theme support, and modular organization.
 
 ## Development Commands
 
@@ -27,14 +27,16 @@ No test infrastructure currently exists. When implementing tests:
 The app follows a **feature-based modular architecture**:
 - **Auth Module** (`Modules/Auth/`): Firebase authentication with email/password
 - **Notes Module** (`Modules/Notes/`): CRUD operations for notes using Firestore
-- **Navigation Module** (`Modules/Navigation/`): Root navigation and authenticated state management
-- **Settings Module** (`Modules/Settings/`): User profile display and logout functionality
+- **Navigation Module** (`Modules/Navigation/`): Root navigation, alerts, and authenticated state management
+- **Settings Module** (`Modules/Settings/`): User profile, theme switching, and logout functionality
 
 ### Key Architectural Patterns
 1. **MVVM with Observable**: Services act as ViewModels using `@Observable` macro
 2. **Environment Injection**: Services injected via SwiftUI environment
 3. **Async/Await**: All Firebase operations use modern Swift concurrency
 4. **User-scoped Data**: Notes stored in Firestore subcollections (`users/{uid}/notes`)
+5. **Centralized Alerts**: AlertService with WithAlertView wrapper
+6. **Repository Pattern**: NoteRepo for data access abstraction
 
 ### Firebase Integration
 - Configuration: `GoogleService-Info.plist` required (not in repo)
@@ -60,20 +62,21 @@ ContentView (auth router) -> AuthService (observable)
 - User state persisted across app launches
 
 ### Notes Management
-- `NoteRepo` (formerly NoteService) handles Firestore CRUD operations
-- Real-time updates via Firestore listeners
+- `NoteRepo` handles Firestore CRUD operations
+- Real-time updates via Firestore listeners with proper cleanup
 - Each note has: id, title, content, createdAt, updatedAt
 - Navigation uses SwiftUI's `NavigationStack` with value-based routing
-- **Bug Fix Applied**: Update method now correctly uses user-scoped collection path
-- **Mock Data Pattern**: Use `Note.mock()` for preview data to avoid @DocumentID warnings
+- Error handling with FirebaseError enum
+- Mock data support for previews and DEBUG mode
 
 ### UI Components
-- Glass effect backgrounds using `Material.ultraThin`
+- Clean design with customizable themes (Light/Dark/System)
 - Custom toolbar configurations in `MainView` with menu navigation
-- Sheet presentations for note editing
+- Sheet presentations for note editing and about view
 - Focus state management for form inputs
 - Settings accessed via NavigationLink from menu
-- Theme management with light/dark/system modes via @AppStorage
+- Theme persistence using @AppStorage("colorScheme")
+- WithAlertView wrapper for consistent alert presentation
 
 ## Development Requirements
 - **Xcode**: 16.0+ (project uses iOS 26.0 deployment target)
@@ -89,14 +92,14 @@ ContentView (auth router) -> AuthService (observable)
 4. Update `MainView` for navigation integration
 
 ### Recent Updates
-- Added Settings module with user profile display and logout
-- Created AboutView with app info, version, and contact details
-- Refactored NoteService to NoteRepo following repository pattern
-- Fixed NoteRepo update method to use correct user-scoped collection
-- Enhanced String extension with password validation
-- Integrated Settings navigation via menu in MainView
-- Fixed @DocumentID warnings with Note.mock() pattern for previews
-- Added theme toggle in Settings (Light/Dark/System modes)
+- **Alert System**: Added centralized AlertService with WithAlertView wrapper
+- **Theme Management**: Implemented theme switching (Light/Dark/System) with persistence
+- **Settings Module**: Enhanced with segmented picker for theme selection
+- **Repository Pattern**: Refactored NoteService to NoteRepo for better abstraction
+- **Error Handling**: Improved with FirebaseError enum (Identifiable, Equatable)
+- **UI Improvements**: Updated Settings to use Form layout, cleaner note editing sheets
+- **Navigation**: AboutView moved to Navigation module, accessed via sheet
+- **Code Organization**: Better separation of concerns with MARK comments
 
 ### Working with Firebase
 - Always use async/await for Firebase operations
@@ -108,25 +111,17 @@ ContentView (auth router) -> AuthService (observable)
 - Mock data in `Preview Assets/Mocks/`
 - Use `#if DEBUG` for preview-specific code
 - Inject mock services for SwiftUI previews
-- Use `Note.mock()` factory method for creating preview notes with IDs
+- Note.mocks provides sample data for previews
 
 ## Troubleshooting & Common Issues
 
 ### Known Issues & Solutions
 
-#### 1. @DocumentID Warning
-**Issue**: "Attempting to initialize or set a @DocumentID property with a non-nil value"
-**Solution**: Use `Note.mock()` for preview data instead of regular initializer
-
-#### 2. ForEach Duplicate ID
-**Issue**: "the ID nil occurs multiple times within the collection"
-**Solution**: Ensure mock data uses `Note.mock()` with unique IDs
-
-#### 3. App Delegate Warning
+#### 1. App Delegate Warning
 **Issue**: "App Delegate does not conform to UIApplicationDelegate protocol"
 **Solution**: This is harmless in SwiftUI apps - Firebase works correctly without traditional AppDelegate
 
-#### 4. Firestore Path Issues
+#### 2. Firestore Path Issues
 **Issue**: Notes not scoped to user or update fails
 **Solution**: Always use `dbCollection` computed property that includes user ID path
 
@@ -138,6 +133,8 @@ ContentView (auth router) -> AuthService (observable)
 @Observable
 class RepoName {
     var data: [Model] = []
+    var error: FirebaseError?
+    private var listener: ListenerRegistration?
     
     private var db = Firestore.firestore()
     
@@ -148,6 +145,10 @@ class RepoName {
     var dbCollection: CollectionReference? {
         guard let userID = currentUserID else { return nil }
         return db.collection("users").document(userID).collection("collection_name")
+    }
+    
+    func stopListening() {
+        listener?.remove()
     }
 }
 ```
@@ -163,19 +164,20 @@ struct ViewName: View {
 }
 ```
 
-### Mock Data Pattern
+### Alert System Pattern
 ```swift
-struct Model: Codable, Identifiable {
-    @DocumentID var id: String?
-    
-    // Regular initializer for production
-    init(/* params */) { /* ... */ }
-    
-    // Mock factory for previews
-    static func mock(id: String, /* params */) -> Model {
-        // Create with ID for previews
-    }
+// In App
+@State private var alertService = AlertService()
+
+// In ContentView
+WithAlertView {
+    YourContent()
+        .environment(alertService)
 }
+
+// In any view
+@Environment(AlertService.self) private var alertService
+alertService.showAlert(title: "Error", message: error.localizedDescription)
 ```
 
 ### Navigation Pattern
@@ -197,16 +199,18 @@ NavigationStack {
 ### Theme Management Pattern
 ```swift
 // In Settings View
-@AppStorage("preferredColorScheme") private var preferredColorScheme: String = "system"
+@AppStorage("colorScheme") private var colorScheme: String = "system"
 
-Picker("Theme", selection: $preferredColorScheme) {
-    Label("System", systemImage: "gear").tag("system")
-    Label("Light", systemImage: "sun.max").tag("light")
-    Label("Dark", systemImage: "moon").tag("dark")
+Picker("Theme", selection: $colorScheme) {
+    Text("System").tag("system")
+    Text("Light").tag("light")
+    Text("Dark").tag("dark")
 }
+.pickerStyle(.segmented)
 
-// In Root View (ContentView)
-.preferredColorScheme(colorSchemeFromString(preferredColorScheme))
+// In ContentView
+@AppStorage("colorScheme") private var colorScheme: String = "system"
+.preferredColorScheme(colorSchemeFromString(colorScheme))
 ```
 
 ## File Naming Conventions
