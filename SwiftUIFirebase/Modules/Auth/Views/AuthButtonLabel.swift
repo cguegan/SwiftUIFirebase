@@ -11,6 +11,7 @@ struct AuthButtonLabel: View {
     
     var text: String = "Login"
     
+    /// View Body
     var body: some View {
         HStack {
             Text(text)
@@ -26,6 +27,10 @@ struct AuthButtonLabel: View {
         .padding()
     }
 }
+
+
+// MARK: - Preview
+// —-—————————————
 
 #Preview {
     AuthButtonLabel()

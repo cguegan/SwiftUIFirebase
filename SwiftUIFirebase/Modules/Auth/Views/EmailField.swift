@@ -12,7 +12,7 @@ struct EmailField: View {
     var placeholder: String = "Email"
     @Binding var email: String
     
-    
+    /// View Body
     var body: some View {
         TextField(placeholder, text: $email)
             .keyboardType(.emailAddress)
@@ -22,6 +22,10 @@ struct EmailField: View {
             .padding(.horizontal)
     }
 }
+
+
+// MARK: - Preview
+// —-—————————————
 
 #Preview {
     EmailField(email: .constant("test@test.com"))

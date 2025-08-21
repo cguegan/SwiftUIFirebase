@@ -9,13 +9,14 @@ import SwiftUI
 
 struct NotesListing: View {
     
-    @Environment(NoteRepo.self) private var noteService
+    @Environment(NoteRepo.self) private var repo
     @State var showEditSheet: Bool = false
+    @State private var error: FirebaseError? = nil
     
     /// The main view for listing notes
     var body: some View {
         List {
-            ForEach(noteService.notes) { note in
+            ForEach(repo.notes) { note in
                 NavigationLink(destination: NoteDetailView(note: note)) {
                     Text(note.title)
                 }
@@ -33,29 +34,38 @@ struct NotesListing: View {
         .sheet(isPresented: $showEditSheet) {
             NoteEditSheet(note: nil)
         }
-    }
-    
-    /// Add a new note
-    func addNote() {
-        do {
-            try noteService.add(Note(title: "New Note", content: ""))
-        } catch {
-            print("Error adding note: \(error)")
+        .alert(item: $error) { error in
+            Alert( title: Text("Error"),
+                   message: Text(error.localizedDescription),
+                   dismissButton: .default(Text("OK")) )
         }
-    }
-    
-    /// Remove items at specified offsets
-    func removeItems(at offsets: IndexSet) {
-        for index in offsets {
-            let note = noteService.notes[index]
-            do {
-                try noteService.delete(note)
-            } catch {
-                print("Error deleting note: \(error)")
+        .onChange(of: repo.error) { _, newError in
+            if let error = newError {
+                self.error = error
             }
         }
     }
+
 }
+
+
+// MARK: - Methods
+// ———————————————
+
+extension NotesListing {
+   
+    /// Remove items at specified offsets
+    func removeItems(at offsets: IndexSet) {
+        Task {
+            for index in offsets {
+                let note = repo.notes[index]
+                await repo.delete(note)
+            }
+        }
+    }
+
+}
+
 
 // MARK: - Preview
 // ———————————————

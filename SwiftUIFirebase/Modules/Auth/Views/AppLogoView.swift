@@ -11,6 +11,7 @@ struct AppLogoView: View {
     
     var color: Color = .black
     
+    /// View Body
     var body: some View {
         ZStack {
             
@@ -32,6 +33,10 @@ struct AppLogoView: View {
         }
     }
 }
+
+
+// MARK: - Preview
+// —-—————————————
 
 #Preview {
     AppLogoView()

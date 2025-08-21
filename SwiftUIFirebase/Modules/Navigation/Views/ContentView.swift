@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var authManager = AuthService()
-    @AppStorage("preferredColorScheme") private var preferredColorScheme: String = "system"
+    @AppStorage("colorScheme") private var colorScheme: String = "system"
 
     var body: some View {
         Group {
@@ -30,7 +30,7 @@ struct ContentView: View {
         .task {
             authManager.refreshUser()
         }
-        .preferredColorScheme(colorSchemeFromString(preferredColorScheme))
+        .preferredColorScheme(colorSchemeFromString(colorScheme))
     }
     
     private func colorSchemeFromString(_ scheme: String) -> ColorScheme? {

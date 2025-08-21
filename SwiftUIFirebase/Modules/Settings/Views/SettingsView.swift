@@ -16,19 +16,15 @@ struct SettingsView: View {
     
     /// App information
     @State private var showLogoutConfirmation = false
-    @AppStorage("preferredColorScheme") private var preferredColorScheme: String = "system"
+    @AppStorage("colorScheme") private var colorScheme: String = "system"
     
     /// Main Body
     var body: some View {
-        ZStack {
-            Rectangle()
-                .fill(.ultraThinMaterial)
-                .ignoresSafeArea()
-            
-            VStack(spacing: 20) {
+        Form {
                 
-                // User Info Section
-                if let user = authService.user {
+            // User Info Section
+            if let user = authService.user {
+                Section {
                     VStack(spacing: 8) {
                         Image(systemName: "person.circle.fill")
                             .font(.system(size: 60))
@@ -38,59 +34,54 @@ struct SettingsView: View {
                             .font(.headline)
                             .foregroundColor(.primary)
                     }
-                    .padding(.top, 40)
+                    .frame(maxWidth: .infinity, alignment: .center)
                 }
-                
-                Spacer()
-                
-                // Settings Options
-                VStack(spacing: 12) {
-                    // Appearance Section
-                    VStack(spacing: 0) {
-                        HStack {
-                            Label("Appearance", systemImage: "moon.circle")
-                                .foregroundColor(.primary)
-                            Spacer()
-                            Picker("Theme", selection: $preferredColorScheme) {
-                                Label("System", systemImage: "gear").tag("system")
-                                Label("Light", systemImage: "sun.max").tag("light")
-                                Label("Dark", systemImage: "moon").tag("dark")
-                            }
-                            .pickerStyle(.menu)
-                            .tint(.blue)
-                        }
-                        .padding()
-                        .background(Color(.systemBackground))
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                    
-                    // Account Section
-                    VStack(spacing: 0) {
-                        // Logout Button
-                        Button {
-                            showLogoutConfirmation = true
-                        } label: {
-                            HStack {
-                                Image(systemName: "rectangle.portrait.and.arrow.right")
-                                    .foregroundColor(.red)
-                                Text("Log Out")
-                                    .foregroundColor(.red)
-                                Spacer()
-                            }
-                            .padding()
-                            .background(Color(.systemBackground))
-                        }
-                    }
-                    .clipShape(RoundedRectangle(cornerRadius: 10))
-                }
-                .padding(.horizontal)
-                
-                Spacer()
             }
+            
+            
+            // Appearance Section
+            Section(header: Text("Appearance")) {
+                HStack {
+                    switch colorScheme {
+                    case "light":
+                        Image(systemName: "sun.max")
+                            .foregroundColor(.yellow)
+                    case "dark":
+                        Image(systemName: "moon")
+                            .foregroundColor(.blue)
+                    default:
+                        Image(systemName: "gear")
+                            .foregroundColor(.gray)
+                    }
+                    
+                    Picker("Theme", selection: $colorScheme) {
+                        Text("System").tag("system")
+                        Text("Light").tag("light")
+                        Text("Dark").tag("dark")
+                    }
+                    .tint(.black)
+                }
+            }
+            
+            // Logout Button
+            Button {
+                showLogoutConfirmation = true
+            } label: {
+                HStack {
+                    Image(systemName: "rectangle.portrait.and.arrow.right")
+                        .foregroundColor(.red)
+                    Text("Log Out")
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+                .frame(maxWidth: .infinity, alignment: .leading)
+            }
+                
         }
         .navigationTitle("Settings")
         .navigationBarTitleDisplayMode(.inline)
-        .alert("Log Out", isPresented: $showLogoutConfirmation) {
+        .alert("Log Out",
+               isPresented: $showLogoutConfirmation) {
             Button("Cancel", role: .cancel) { }
             Button("Log Out", role: .destructive) {
                 authService.signOut()
@@ -112,3 +103,4 @@ struct SettingsView: View {
             .environment(AuthService())
     }
 }
+

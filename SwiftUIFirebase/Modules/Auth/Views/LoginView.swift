@@ -90,6 +90,10 @@ struct LoginView: View {
     }
 }
 
+
+// MARK: - Preview
+// —-—————————————
+
 #Preview {
     LoginView()
         .environment(AuthService())

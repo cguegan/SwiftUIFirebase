@@ -7,7 +7,8 @@
 
 import Foundation
 
-enum FirebaseError: Error {
+enum FirebaseError: Error, Equatable, Identifiable {
+    
     case notAuthenticated
     case documentNotFound
     case listenerFailed
@@ -16,6 +17,10 @@ enum FirebaseError: Error {
     case updateDocumentFailed
     case deleteDocumentFailed
     case unknownError(String)
+    
+    var id: String {
+        self.localizedDescription
+    }
     
     var localizedDescription: String {
         switch self {

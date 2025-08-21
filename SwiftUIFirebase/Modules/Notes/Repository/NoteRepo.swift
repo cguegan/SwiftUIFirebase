@@ -16,7 +16,10 @@ class NoteRepo {
     
     /// Observable Properties
     var notes: [Note] = [Note]()
+    var error: FirebaseError?
         
+    private var listener: ListenerRegistration?
+    
     /// Firebase Firestore Database Reference
     private var db = Firestore.firestore()
     private var collectionName = "notes"
@@ -32,7 +35,7 @@ class NoteRepo {
     
     /// Initialize the service
     init() {
-        self.getNotes()
+        try? self.getNotes()
         
         #if DEBUG
         /// For debugging purposes, you can add some sample data
@@ -41,70 +44,83 @@ class NoteRepo {
     }
     
     /// Listen to the collection
-    func getNotes() {
+    func getNotes() throws {
         guard let dbCollection = dbCollection else {
-            print("User is not authenticated or collection does not exist.")
-            return
+            throw FirebaseError.listenerFailed
         }
         
-        dbCollection.order(by: "title").addSnapshotListener { snapshot, error in
-            if let error = error {
-                print("❌ Error getting notes: \(error)")
+        self.listener = dbCollection.order(by: "title").addSnapshotListener { snapshot, error in
+            
+            guard let documents = snapshot?.documents else {
+                print("Error fetching documents: \(error!)")
+                self.error = FirebaseError.listenerFailed
                 return
             }
-            
-            self.notes = snapshot?.documents.compactMap { document in
+
+            self.notes = documents.compactMap { document in
                 try? document.data(as: Note.self)
-            } ?? []
+            }
         }
     }
     
+    /// Stop listening to the collection
+    func stopListening() {
+        listener?.remove()
+    }
+    
     // Add an item
-    func add(_ note: Note) throws {
+    func add(_ note: Note) {
         guard let dbCollection = dbCollection else {
-            throw FirebaseError.notAuthenticated
+            self.error = FirebaseError.notAuthenticated
+            return
         }
         
         do {
             _ = try dbCollection.addDocument(from: note)
         } catch {
-            print("❌ Error adding document: \(error.localizedDescription)")
-            throw FirebaseError.addDocumentFailed
+            self.error = FirebaseError.addDocumentFailed
         }
     }
         
     // Update an item
-    func update(_ note: Note) throws {
+    func update(_ note: Note) {
         guard let dbCollection = dbCollection else {
-            throw FirebaseError.notAuthenticated
+            self.error = FirebaseError.notAuthenticated
+            return
         }
         
         guard let noteID = note.id else {
-            throw FirebaseError.updateDocumentFailed
+            self.error = FirebaseError.updateDocumentFailed
+            return
         }
         
         do {
             try dbCollection.document(noteID).setData(from: note)
         } catch {
-            print("❌ Error updating note: \(error)")
+            self.error = FirebaseError.updateDocumentFailed
+            return
         }
     }
         
     /// Delete an item
-    func delete(_ note: Note) throws {
+    func delete(_ note: Note) async  {
         guard let dbCollection = dbCollection else {
-            throw FirebaseError.notAuthenticated
+            self.error = FirebaseError.notAuthenticated
+            return
         }
         
         guard let noteID = note.id else {
-            throw FirebaseError.deleteDocumentFailed
+            self.error = FirebaseError.documentNotFound
+            return
         }
         
-        dbCollection.document(noteID).delete { error in
-            if let error = error {
-                print("❌ Error deleting note: \(error)")
-            }
+        do {
+            try await dbCollection.document(noteID).delete()
+        } catch {
+            self.error = FirebaseError.deleteDocumentFailed
+            return
         }
+        
     }
     
 }

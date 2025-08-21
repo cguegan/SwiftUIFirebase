@@ -30,6 +30,7 @@ struct RegistrationView: View {
         password == confirmPassword
     }
     
+    /// View Body
     var body: some View {
         VStack() {
             
@@ -63,8 +64,8 @@ struct RegistrationView: View {
             } label: {
                 AuthButtonLabel(text: "Sign Up")
             }
-//            .disabled(!formIsValid)
-//            .opacity(!formIsValid ? 0.5 : 1)
+            .disabled(!formIsValid)
+            .opacity(!formIsValid ? 0.5 : 1)
             
             Spacer()
             
@@ -96,6 +97,10 @@ struct RegistrationView: View {
                                   password: password ) }
     }
 }
+
+
+// MARK: - Preview
+// —-—————————————
 
 #Preview {
     RegistrationView()
